@@ -1,10 +1,11 @@
 package com.example.tabbedactivity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +23,8 @@ public class Tab2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    GridView gridView;
 
     /**
      * Use this factory method to create a new instance of
@@ -48,16 +51,22 @@ public class Tab2 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+//        setContentView(R.layout.activity_main);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
+        gridView = rootView.findViewById(R.id.grid_view);
+            gridView.setAdapter(new ImageAdapter(getActivity()));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab2, container, false);
+        return rootView;
     }
 }
