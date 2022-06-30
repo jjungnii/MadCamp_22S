@@ -1,10 +1,12 @@
 package com.example.tabbedactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 /**
@@ -67,6 +69,15 @@ public class Tab2 extends Fragment {
         gridView = rootView.findViewById(R.id.grid_view);
             gridView.setAdapter(new ImageAdapter(getActivity()));
         // Inflate the layout for this fragment
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), FullScreenActivity.class);
+                intent.putExtra("id", position);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 }
