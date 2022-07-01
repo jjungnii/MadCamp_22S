@@ -67,7 +67,7 @@ public class Tab2 extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
         gridView = rootView.findViewById(R.id.grid_view);
-            gridView.setAdapter(new ImageAdapter(getActivity()));
+        gridView.setAdapter(new ImageAdapter(getActivity()));
         // Inflate the layout for this fragment
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
