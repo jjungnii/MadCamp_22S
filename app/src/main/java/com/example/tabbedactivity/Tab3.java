@@ -85,6 +85,7 @@ public class Tab3 extends Fragment {
         textView2 = rootView.findViewById(R.id.textView2);
         textView3 = rootView.findViewById(R.id.textView3);
         contextEditText = rootView.findViewById(R.id.contextEditText);
+        contextEditText.setPrivateImeOptions( "defaultInputmode=korean;" );
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
         {
