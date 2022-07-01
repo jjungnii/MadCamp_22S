@@ -37,7 +37,7 @@ public class Tab3 extends Fragment {
     public String readDay = null;
     public String str = null;
     public CalendarView calendarView;
-    public Button cha_txt_Btn, cha_img_Btn, del_Btn, add_img_Btn, add_txt_Btn;
+    public Button edit_Btn, del_Btn, edit_img_Btn, save_Btn;
     public TextView diaryTextView, textView2, textView3;
     public EditText contextEditText;
 
@@ -79,11 +79,10 @@ public class Tab3 extends Fragment {
         // Inflate the layout for this fragment
         calendarView = rootView.findViewById(R.id.calendarView);
         diaryTextView = rootView.findViewById(R.id.diaryTextView);
-        add_img_Btn = rootView.findViewById(R.id.add_img_Btn);
-        add_txt_Btn = rootView.findViewById(R.id.add_txt_Btn);
+        save_Btn = rootView.findViewById(R.id.save_Btn);
+        edit_img_Btn = rootView.findViewById(R.id.edit_img_Btn);
         del_Btn = rootView.findViewById(R.id.del_Btn);
-        cha_txt_Btn = rootView.findViewById(R.id.cha_txt_Btn);
-        cha_img_Btn = rootView.findViewById(R.id.cha_img_Btn);
+        edit_Btn = rootView.findViewById(R.id.edit_Btn);
         textView2 = rootView.findViewById(R.id.textView2);
         textView3 = rootView.findViewById(R.id.textView3);
         contextEditText = rootView.findViewById(R.id.contextEditText);
@@ -95,19 +94,18 @@ public class Tab3 extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
                 diaryTextView.setVisibility(View.VISIBLE);
-                add_img_Btn.setVisibility(View.VISIBLE);
-                add_txt_Btn.setVisibility(View.VISIBLE);
+                edit_img_Btn.setVisibility(View.VISIBLE);
+                save_Btn.setVisibility(View.VISIBLE);
                 contextEditText.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.INVISIBLE);
-                cha_txt_Btn.setVisibility(View.INVISIBLE);
-                cha_img_Btn.setVisibility(View.INVISIBLE);
+                edit_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
                 diaryTextView.setText(year + " / " + (month + 1) + " / " + dayOfMonth);
                 contextEditText.setText("");
                 checkDay(year, month, dayOfMonth);
             }
         });
-        add_txt_Btn.setOnClickListener(new View.OnClickListener()
+        save_Btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -115,10 +113,9 @@ public class Tab3 extends Fragment {
                 saveDiary(readDay);
                 str = contextEditText.getText().toString();
                 textView2.setText(str);
-                add_img_Btn.setVisibility(View.INVISIBLE);
-                add_txt_Btn.setVisibility(View.INVISIBLE);
-                cha_txt_Btn.setVisibility(View.VISIBLE);
-                cha_img_Btn.setVisibility(View.VISIBLE);
+                edit_img_Btn.setVisibility(View.INVISIBLE);
+                save_Btn.setVisibility(View.INVISIBLE);
+                edit_Btn.setVisibility(View.VISIBLE);
                 del_Btn.setVisibility(View.VISIBLE);
                 contextEditText.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.VISIBLE);
@@ -147,13 +144,12 @@ public class Tab3 extends Fragment {
             textView2.setVisibility(View.VISIBLE);
             textView2.setText(str);
 
-            add_img_Btn.setVisibility(View.INVISIBLE);
-            add_txt_Btn.setVisibility(View.INVISIBLE);
-            cha_txt_Btn.setVisibility(View.VISIBLE);
-            cha_img_Btn.setVisibility(View.VISIBLE);
+            edit_img_Btn.setVisibility(View.INVISIBLE);
+            save_Btn.setVisibility(View.INVISIBLE);
+            edit_Btn.setVisibility(View.VISIBLE);
             del_Btn.setVisibility(View.VISIBLE);
 
-            cha_txt_Btn.setOnClickListener(new View.OnClickListener()
+            edit_Btn.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View view)
@@ -162,33 +158,14 @@ public class Tab3 extends Fragment {
                     textView2.setVisibility(View.INVISIBLE);
                     contextEditText.setText(str);
 
-                    add_img_Btn.setVisibility(View.VISIBLE);
-                    add_txt_Btn.setVisibility(View.VISIBLE);
-                    cha_txt_Btn.setVisibility(View.INVISIBLE);
-                    cha_img_Btn.setVisibility(View.INVISIBLE);
+                    edit_img_Btn.setVisibility(View.VISIBLE);
+                    save_Btn.setVisibility(View.VISIBLE);
+                    edit_Btn.setVisibility(View.INVISIBLE);
                     del_Btn.setVisibility(View.INVISIBLE);
                     textView2.setText(contextEditText.getText());
                 }
 
             });
-
-//            cha_img_Btn.setOnClickListener(new View.OnClickListener()
-//            {
-//                @Override
-//                public void onClick(View view)
-//                {
-//                    contextEditText.setVisibility(View.VISIBLE);
-//                    textView2.setVisibility(View.INVISIBLE);
-//                    contextEditText.setText(str);
-//
-//                    save_Btn.setVisibility(View.VISIBLE);
-//                    cha_txt_Btn.setVisibility(View.INVISIBLE);
-//                    cha_img_Btn.setVisibility(View.INVISIBLE);
-//                    del_Btn.setVisibility(View.INVISIBLE);
-//                    textView2.setText(contextEditText.getText());
-//                }
-//
-//            });
 
             del_Btn.setOnClickListener(new View.OnClickListener()
             {
@@ -198,10 +175,9 @@ public class Tab3 extends Fragment {
                     textView2.setVisibility(View.INVISIBLE);
                     contextEditText.setText("");
                     contextEditText.setVisibility(View.VISIBLE);
-                    add_img_Btn.setVisibility(View.VISIBLE);
-                    add_txt_Btn.setVisibility(View.VISIBLE);
-                    cha_txt_Btn.setVisibility(View.INVISIBLE);
-                    cha_img_Btn.setVisibility(View.INVISIBLE);
+                    edit_img_Btn.setVisibility(View.VISIBLE);
+                    save_Btn.setVisibility(View.VISIBLE);
+                    edit_Btn.setVisibility(View.INVISIBLE);
                     del_Btn.setVisibility(View.INVISIBLE);
                     removeDiary(readDay);
                 }
@@ -210,10 +186,9 @@ public class Tab3 extends Fragment {
             {
                 textView2.setVisibility(View.INVISIBLE);
                 diaryTextView.setVisibility(View.VISIBLE);
-                add_img_Btn.setVisibility(View.VISIBLE);
-                add_txt_Btn.setVisibility(View.VISIBLE);
-                cha_txt_Btn.setVisibility(View.INVISIBLE);
-                cha_img_Btn.setVisibility(View.INVISIBLE);
+                edit_img_Btn.setVisibility(View.VISIBLE);
+                save_Btn.setVisibility(View.VISIBLE);
+                edit_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
                 contextEditText.setVisibility(View.VISIBLE);
             }
