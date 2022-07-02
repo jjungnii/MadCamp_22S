@@ -3,10 +3,14 @@ package com.example.tabbedactivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
@@ -36,8 +42,9 @@ public class Tab3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public String readDay = null;
+    public String txt_fname = null;
     public String str = null;
+    public String img_fname = null;
     public CalendarView calendarView;
     public Button edit_Btn, del_Btn, edit_img_Btn, save_Btn;
     public TextView diaryTextView, textView2, textView3;
@@ -97,6 +104,7 @@ public class Tab3 extends Fragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth)
             {
+                Log.i("Changed","Day");
                 diaryTextView.setVisibility(View.VISIBLE);
                 edit_img_Btn.setVisibility(View.VISIBLE);
                 save_Btn.setVisibility(View.VISIBLE);
@@ -107,6 +115,7 @@ public class Tab3 extends Fragment {
                 selectedImg.setVisibility(View.VISIBLE);
                 diaryTextView.setText(year + " / " + (month + 1) + " / " + dayOfMonth);
                 contextEditText.setText("");
+                img_fname = "" + year + "-" + (month + 1) + "" + "-" + dayOfMonth + ".png";
                 checkDay(year, month, dayOfMonth);
             }
         });
@@ -116,7 +125,7 @@ public class Tab3 extends Fragment {
             @Override
             public void onClick(View view)
             {
-                saveDiary(readDay);
+                saveDiary(txt_fname);
                 str = contextEditText.getText().toString();
                 textView2.setText(str);
                 edit_img_Btn.setVisibility(View.INVISIBLE);
@@ -133,24 +142,56 @@ public class Tab3 extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), EditImage.class);
+                intent.putExtra("img_filename", img_fname);
                 startActivity(intent);
             }
         });
+
         return rootView;
     }
 
     public void checkDay(int cYear, int cMonth, int cDay)
     {
-        readDay = "" + cYear + "-" + (cMonth + 1) + "" + "-" + cDay + ".txt";
-        FileInputStream fis;
+        txt_fname = "" + cYear + "-" + (cMonth + 1) + "" + "-" + cDay + ".txt";
+//        File storage_txt = getActivity().getCacheDir();
+//        Log.i("txt File name", txt_fname);
+//        File f_txt = new File(storage_txt, txt_fname);
+
+        FileInputStream fis_txt, fis_img;
+        BufferedInputStream buf;
+
+        File storage = getActivity().getCacheDir();
+        Log.i("IMG File name", img_fname);
+        File f = new File(storage, img_fname);
+        Log.i("IMG File exists?", f.exists() + "");
+
+        try{
+            if(!f.exists()) {
+                Log.i("Input Img exists?","파일이 없습니다.");
+                selectedImg.setImageResource(R.mipmap.ic_launcher);
+            }
+            else{
+                Log.i("Input Img exists?","파일이 있습니다.");
+                fis_img = new FileInputStream(f);
+                buf = new BufferedInputStream(fis_img);
+                Bitmap tmp = BitmapFactory.decodeStream(buf);
+                selectedImg.setImageBitmap(tmp);
+                fis_img.close();
+            }
+        }
+        catch (Exception e)
+        {
+            Log.i("Input Img exists?","이미지 에러 발생");
+            e.printStackTrace();
+        }
 
         try
         {
-            fis = getActivity().openFileInput(readDay);
+            fis_txt = getActivity().openFileInput(txt_fname);
 
-            byte[] fileData = new byte[fis.available()];
-            fis.read(fileData);
-            fis.close();
+            byte[] fileData = new byte[fis_txt.available()];
+            fis_txt.read(fileData);
+            fis_txt.close();
 
             str = new String(fileData);
 
@@ -189,7 +230,7 @@ public class Tab3 extends Fragment {
                 public void onClick(View view)
                 {
                     textView2.setVisibility(View.INVISIBLE);
-                    contextEditText.setText("");
+//                    contextEditText.setText("");
                     contextEditText.setVisibility(View.VISIBLE);
                     edit_img_Btn.setVisibility(View.VISIBLE);
                     save_Btn.setVisibility(View.VISIBLE);
@@ -197,56 +238,72 @@ public class Tab3 extends Fragment {
                     del_Btn.setVisibility(View.INVISIBLE);
                     //selectedImg를 기본 이미지로 바꿔줘야 함
                     selectedImg.setVisibility(View.VISIBLE);
-                    removeDiary(readDay);
+                    removeDiary(txt_fname);
                 }
             });
-            if (textView2.getText() == null)
-            {
-                textView2.setVisibility(View.INVISIBLE);
-                diaryTextView.setVisibility(View.VISIBLE);
-                edit_img_Btn.setVisibility(View.VISIBLE);
-                save_Btn.setVisibility(View.VISIBLE);
-                edit_Btn.setVisibility(View.INVISIBLE);
-                del_Btn.setVisibility(View.INVISIBLE);
-                contextEditText.setVisibility(View.VISIBLE);
-                selectedImg.setVisibility(View.VISIBLE);
-            }
+        }
+        catch (Exception e)
+        {
+            Log.i("Input Img exists?","텍스트 에러 발생");
+            e.printStackTrace();
+        }
+        if (textView2.getText() == null)
+        {
+            Log.i("Text deleted", "Yes!");
+            textView2.setVisibility(View.INVISIBLE);
+            diaryTextView.setVisibility(View.VISIBLE);
+            edit_img_Btn.setVisibility(View.VISIBLE);
+            save_Btn.setVisibility(View.VISIBLE);
+            edit_Btn.setVisibility(View.INVISIBLE);
+            del_Btn.setVisibility(View.INVISIBLE);
+            contextEditText.setVisibility(View.VISIBLE);
+            selectedImg.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @SuppressLint("WrongConstant")
+    public void removeDiary(String txt_fname)
+    {
+        FileOutputStream fos;
+        try
+        {
+//            fos = getActivity().openFileOutput(txt_fname, Context.MODE_NO_LOCALIZED_COLLATORS);
+            File storage_txt = getActivity().getCacheDir();
+            File file_txt = new File(storage_txt, txt_fname);
+            file_txt.delete();
+//            String content = "";
+//            fos.write((content).getBytes());
+//            fos.close();
 
         }
         catch (Exception e)
         {
             e.printStackTrace();
+            Log.i("Text deleted?", "No");
         }
-    }
 
-    @SuppressLint("WrongConstant")
-    public void removeDiary(String readDay)
-    {
-        FileOutputStream fos;
-        try
-        {
-            fos = getActivity().openFileOutput(readDay, Context.MODE_NO_LOCALIZED_COLLATORS);
-            String content = "";
-            fos.write((content).getBytes());
-            fos.close();
-
-        }
-        catch (Exception e)
-        {
+        try {
+            File storage = getActivity().getCacheDir();
+            Log.i("IMG File name", img_fname);
+            File file = new File(storage, img_fname);
+            file.delete();
+            selectedImg.setImageResource(R.mipmap.ic_launcher);
+        } catch (Exception e) {
             e.printStackTrace();
+            Log.i("IMG File deleted?", " 에러 발생");
         }
     }
 
     @SuppressLint("WrongConstant")
-    public void saveDiary(String readDay)
+    public void saveDiary(String txt_fname)
     {
-        FileOutputStream fos;
+        FileOutputStream fos_txt;
         try
         {
-            fos = getActivity().openFileOutput(readDay, Context.MODE_NO_LOCALIZED_COLLATORS);
+            fos_txt = getActivity().openFileOutput(txt_fname, Context.MODE_NO_LOCALIZED_COLLATORS);
             String content = contextEditText.getText().toString();
-            fos.write((content).getBytes());
-            fos.close();
+            fos_txt.write((content).getBytes());
+            fos_txt.close();
         }
         catch (Exception e)
         {

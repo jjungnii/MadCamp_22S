@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/new_memory_selected_image"
-        android:src="@mipmap/ic_launcher"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:src="@mipmap/ic_launcher"
         android:layout_marginTop="30dp"/>
 
     <Button
