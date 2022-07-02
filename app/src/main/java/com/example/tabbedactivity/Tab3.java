@@ -2,6 +2,7 @@ package com.example.tabbedactivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.FileInputStream;
@@ -40,6 +42,7 @@ public class Tab3 extends Fragment {
     public Button edit_Btn, del_Btn, edit_img_Btn, save_Btn;
     public TextView diaryTextView, textView2, textView3;
     public EditText contextEditText;
+    public ImageView selectedImg;
 
     /**
      * Use this factory method to create a new instance of
@@ -86,6 +89,7 @@ public class Tab3 extends Fragment {
         textView2 = rootView.findViewById(R.id.textView2);
         textView3 = rootView.findViewById(R.id.textView3);
         contextEditText = rootView.findViewById(R.id.contextEditText);
+        selectedImg = rootView.findViewById(R.id.selectedImg);
         contextEditText.setPrivateImeOptions( "defaultInputmode=korean;" );
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
@@ -100,11 +104,13 @@ public class Tab3 extends Fragment {
                 textView2.setVisibility(View.INVISIBLE);
                 edit_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
+                selectedImg.setVisibility(View.VISIBLE);
                 diaryTextView.setText(year + " / " + (month + 1) + " / " + dayOfMonth);
                 contextEditText.setText("");
                 checkDay(year, month, dayOfMonth);
             }
         });
+
         save_Btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -119,7 +125,15 @@ public class Tab3 extends Fragment {
                 del_Btn.setVisibility(View.VISIBLE);
                 contextEditText.setVisibility(View.INVISIBLE);
                 textView2.setVisibility(View.VISIBLE);
+                selectedImg.setVisibility(View.VISIBLE);
+            }
+        });
 
+        edit_img_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), EditImage.class);
+                startActivity(intent);
             }
         });
         return rootView;
@@ -148,6 +162,7 @@ public class Tab3 extends Fragment {
             save_Btn.setVisibility(View.INVISIBLE);
             edit_Btn.setVisibility(View.VISIBLE);
             del_Btn.setVisibility(View.VISIBLE);
+            selectedImg.setVisibility(View.VISIBLE);
 
             edit_Btn.setOnClickListener(new View.OnClickListener()
             {
@@ -162,6 +177,7 @@ public class Tab3 extends Fragment {
                     save_Btn.setVisibility(View.VISIBLE);
                     edit_Btn.setVisibility(View.INVISIBLE);
                     del_Btn.setVisibility(View.INVISIBLE);
+                    selectedImg.setVisibility(View.VISIBLE);
                     textView2.setText(contextEditText.getText());
                 }
 
@@ -179,6 +195,8 @@ public class Tab3 extends Fragment {
                     save_Btn.setVisibility(View.VISIBLE);
                     edit_Btn.setVisibility(View.INVISIBLE);
                     del_Btn.setVisibility(View.INVISIBLE);
+                    //selectedImg를 기본 이미지로 바꿔줘야 함
+                    selectedImg.setVisibility(View.VISIBLE);
                     removeDiary(readDay);
                 }
             });
@@ -191,6 +209,7 @@ public class Tab3 extends Fragment {
                 edit_Btn.setVisibility(View.INVISIBLE);
                 del_Btn.setVisibility(View.INVISIBLE);
                 contextEditText.setVisibility(View.VISIBLE);
+                selectedImg.setVisibility(View.VISIBLE);
             }
 
         }
