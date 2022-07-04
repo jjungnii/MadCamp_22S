@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,6 +98,8 @@ public class Tab3 extends Fragment {
         contextEditText = rootView.findViewById(R.id.contextEditText);
         selectedImg = rootView.findViewById(R.id.selectedImg);
         contextEditText.setPrivateImeOptions( "defaultInputmode=korean;" );
+
+        textView2.setMovementMethod(new ScrollingMovementMethod());
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
         {
@@ -218,6 +221,8 @@ public class Tab3 extends Fragment {
             File storage_txt = getActivity().getCacheDir();
             File file_txt = new File(storage_txt, txt_fname);
 
+            Log.i("entered text print", file_txt.exists() + "");
+
             if(!file_txt.exists()) {
                 textView2.setText("");
                 contextEditText.setVisibility(View.VISIBLE);
@@ -228,21 +233,30 @@ public class Tab3 extends Fragment {
                 selectedImg.setVisibility(View.VISIBLE);
             }
             else{
-                fis_txt = getActivity().openFileInput(txt_fname);
+                fis_txt = new FileInputStream(file_txt);
 
                 byte[] fileData = new byte[fis_txt.available()];
                 fis_txt.read(fileData);
                 fis_txt.close();
 
                 str = new String(fileData);
+                Log.i("entered text length", str.length() + "");
 
-                contextEditText.setVisibility(View.INVISIBLE);
-                textView2.setVisibility(View.VISIBLE);
-                textView2.setText(str);
+                if(str.length() == 0){
+                    contextEditText.setVisibility(View.VISIBLE);
+                    textView2.setVisibility(View.INVISIBLE);
+                    save_Btn.setVisibility(View.VISIBLE);
+                    edit_Btn.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    contextEditText.setVisibility(View.INVISIBLE);
+                    textView2.setVisibility(View.VISIBLE);
+                    textView2.setText(str);
 
-                save_Btn.setVisibility(View.INVISIBLE);
-                edit_Btn.setVisibility(View.VISIBLE);
-                selectedImg.setVisibility(View.VISIBLE);
+                    save_Btn.setVisibility(View.INVISIBLE);
+                    edit_Btn.setVisibility(View.VISIBLE);
+                    selectedImg.setVisibility(View.VISIBLE);
+                }
             }
 
 
@@ -264,6 +278,7 @@ public class Tab3 extends Fragment {
         }
         catch (Exception e)
         {
+            Log.i("entered text print", "에러 발생");
             e.printStackTrace();
         }
 
@@ -315,6 +330,7 @@ public class Tab3 extends Fragment {
         {
             fos_txt = new FileOutputStream(file_txt);
             String content = contextEditText.getText().toString();
+            Log.i("entered text", content);
             fos_txt.write((content).getBytes());
             fos_txt.close();
         }
