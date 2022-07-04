@@ -27,7 +27,6 @@ public class EditImage extends AppCompatActivity {
     private ImageView selectedImageView;
     private String img_fname;
     private Bitmap bitmap_tmp;
-    public ImageView selectedImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class EditImage extends AppCompatActivity {
     }
 
     public void openGallery(View view) {
-        //TODO: Step 2. launch gallery request
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -46,7 +44,6 @@ public class EditImage extends AppCompatActivity {
     }
 
     public void openCamera(View view) {
-        //TODO: Step 5. launch camera activity
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, CAMERA_REQUEST_CODE);
@@ -54,24 +51,22 @@ public class EditImage extends AppCompatActivity {
     }
 
     public void cancel(View view) {
+
+        getIntent().putExtra("ddd", "000");
+
         finish();
     }
 
     public void save(View view) {
-        //TODO: Step 9. Update model object
-//        Memory memory = new Memory(titleEditText.getText().toString());
         FileOutputStream fos;
 
         File storage = getCacheDir();
         File f = new File(storage, img_fname);
-        if(f.exists()) Log.i("file", "saved");
 
         try
         {
             fos = new FileOutputStream(f);
             bitmap_tmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
-
-            if(f.exists()) Log.i("file", "saved");
             fos.close();
         }
         catch (Exception e)
