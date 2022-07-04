@@ -1,9 +1,11 @@
 package com.example.tabbedactivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 
 public class PhoneBookDB extends SQLiteOpenHelper {
@@ -50,5 +52,23 @@ public class PhoneBookDB extends SQLiteOpenHelper {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
+    }
+
+    public void addPhoneNumber(String name, String phone_number, byte[] phone_photo){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_NAME, name);
+        cv.put(COLUMN_PHONE_NUMBER, phone_number);
+        cv.put(COLUMN_PHONE_PHOTO, phone_photo);
+
+        long result = db.insert(TABLE_NAME, null, cv);
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+
+        }else{
+            Toast.makeText(context, "Successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -1,10 +1,20 @@
 package com.example.tabbedactivity;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +31,12 @@ public class Tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    PhoneBookDB db;
+    ArrayList<PhoneBook> phoneList = new ArrayList<>();
+    RecyclerView recyclerView;
+    PhoneBookAdapter adapter;
+    TextView noDataText;
 
     public Tab1() {
         // Required empty public constructor
@@ -53,10 +69,57 @@ public class Tab1 extends Fragment {
         }
     }
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+        adapter = new PhoneBookAdapter(getActivity());
+        recyclerView.setAdapter(adapter);
+        noDataText = rootView.findViewById(R.id.noData_text);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        db = new PhoneBookDB(getActivity());
+
+        storeDataInArrays();
+
+        FloatingActionButton addBtn = rootView.findViewById(R.id.add_btn);
+        addBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity().getApplicationContext(), AddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return rootView;
+    }
+
+    void storeDataInArrays() {
+        Cursor cursor = db.readAllData();
+        if(cursor.getCount()==0){
+            noDataText.setVisibility(noDataText.VISIBLE);
+        }else{
+            noDataText.setVisibility(noDataText.GONE);
+
+            while(cursor.moveToNext()){
+
+                PhoneBook phone = new PhoneBook(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getBlob(3));
+
+                phoneList.add(phone);
+                adapter.addItem(phone);
+
+                adapter.notifyDataSetChanged();
+            }
+        }
+
     }
 }

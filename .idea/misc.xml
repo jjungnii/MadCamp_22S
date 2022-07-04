@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.22761707988980717" />
-        <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/fragment_tab1.xml" value="0.1" />
+        <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/activity_add.xml" value="0.1" />
+        <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/activity_edit_image.xml" value="0.1" />
+        <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/fragment_tab1.xml" value="0.22" />
+        <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/fragment_tab2.xml" value="0.1" />
+        <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/fragment_tab3.xml" value="0.1" />
         <entry key="..\:/Users/mcsj1/AndroidStudioProjects/MadCamp_22S(6)/app/src/main/res/layout/phone_item.xml" value="0.26595001220703124" />
         <entry key="app/src/main/res/layout/activity_edit_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_full_screen.xml" value="0.16210739614994935" />
@@ -25,7 +29,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.26595001220703124" />
+        <option name="scale" value="0.22" />
       </ProjectState>
     </option>
   </component>
