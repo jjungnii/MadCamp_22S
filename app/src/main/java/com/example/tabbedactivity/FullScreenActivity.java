@@ -20,7 +20,7 @@ public class FullScreenActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.image_view);
 
-        getSupportActionBar().setTitle("Full Screen Image");
+//        getSupportActionBar().setTitle("Full Screen Image");
 
         Intent i = getIntent();
 

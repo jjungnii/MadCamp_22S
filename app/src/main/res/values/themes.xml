@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TabbedActivity" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.TabbedActivity" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#1F5F5B</item>
         <item name="colorPrimaryDark">@color/black</item>
