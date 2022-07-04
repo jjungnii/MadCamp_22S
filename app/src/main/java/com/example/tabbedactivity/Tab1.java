@@ -86,7 +86,7 @@ public class Tab1 extends Fragment {
 
         db = new PhoneBookDB(getActivity());
 
-        storeDataInArrays();
+
 
         FloatingActionButton addBtn = rootView.findViewById(R.id.add_btn);
         addBtn.setOnClickListener(new View.OnClickListener(){
@@ -96,7 +96,7 @@ public class Tab1 extends Fragment {
                 startActivity(intent);
             }
         });
-
+        storeDataInArrays();
         return rootView;
     }
 

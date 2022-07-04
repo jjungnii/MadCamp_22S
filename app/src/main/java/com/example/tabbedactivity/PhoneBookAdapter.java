@@ -42,10 +42,14 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
 
         holder.id_text.setText(String.valueOf(phone.getPhone_id()));
         holder.name_text.setText(String.valueOf(phone.getPhone_name()));
+        holder.number_text.setText(String.valueOf(phone.getPhone_number()));
 
         byte[] phoneImage = phone.getUser_image();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(phoneImage, 0, phoneImage.length);
-        holder.imageView.setImageBitmap(bitmap);
+        if (phoneImage!= null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(phoneImage, 0, phoneImage.length);
+            holder.imageView.setImageBitmap(bitmap);
+        }
+
     }
 
     @Override
@@ -63,7 +67,7 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView id_text, name_text;
+        TextView id_text, name_text, number_text;
         ImageView imageView;
         LinearLayout mainLayout;
 
@@ -72,7 +76,8 @@ public class PhoneBookAdapter extends RecyclerView.Adapter<PhoneBookAdapter.MyVi
 
             id_text = itemView.findViewById(R.id.id_text);
             name_text = itemView.findViewById(R.id.name_text);
-            imageView = itemView.findViewById(R.id.uwer_image);
+            imageView = itemView.findViewById(R.id.user_image);
+            number_text = itemView.findViewById(R.id.number_text);
             mainLayout = itemView.findViewById(R.id.main_layout);
         }
     }

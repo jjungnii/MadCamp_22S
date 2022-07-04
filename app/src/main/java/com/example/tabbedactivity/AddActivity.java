@@ -53,6 +53,7 @@ public class AddActivity extends AppCompatActivity {
                 PhoneBookDB addressDB = new PhoneBookDB(AddActivity.this);
 
                 addressDB.addPhoneNumber(name, phone, data);
+                finish();
             }
         });
     }
@@ -79,6 +80,7 @@ public class AddActivity extends AppCompatActivity {
                 Uri selectedImage = data.getData();
                 InputStream imageStream = getContentResolver().openInputStream(selectedImage);
                 imageView.setImageBitmap(BitmapFactory.decodeStream(imageStream));
+
             } catch (IOException exception) {
                 exception.printStackTrace();
             }

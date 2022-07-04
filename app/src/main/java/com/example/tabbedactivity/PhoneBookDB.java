@@ -31,7 +31,8 @@ public class PhoneBookDB extends SQLiteOpenHelper {
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_PHONE_NUMBER + " TEXT, "+
-                COLUMN_PHONE_PHOTO + " BLOP);";
+                COLUMN_PHONE_PHOTO + " BLOB); ";
+
 
         db.execSQL(query);
     }
