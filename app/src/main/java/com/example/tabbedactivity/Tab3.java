@@ -154,7 +154,7 @@ public class Tab3 extends Fragment {
                     File storage = getActivity().getCacheDir();
                     File file = new File(storage, img_fname);
                     file.delete();
-                    selectedImg.setImageResource(R.mipmap.ic_launcher);
+                    selectedImg.setImageResource(R.drawable.icon_img);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -174,7 +174,7 @@ public class Tab3 extends Fragment {
 
         try{
             if(!f.exists()) {
-                selectedImg.setImageResource(R.mipmap.ic_launcher);
+                selectedImg.setImageResource(R.drawable.icon_img);
             }
             else{
                 fis_img = new FileInputStream(f);
@@ -202,7 +202,7 @@ public class Tab3 extends Fragment {
 
         try{
             if(!f.exists()) {
-                selectedImg.setImageResource(R.mipmap.ic_launcher);
+                selectedImg.setImageResource(R.drawable.icon_img);
             }
             else{
                 fis_img = new FileInputStream(f);
@@ -313,7 +313,7 @@ public class Tab3 extends Fragment {
             File storage = getActivity().getCacheDir();
             File file = new File(storage, img_fname);
             file.delete();
-            selectedImg.setImageResource(R.mipmap.ic_launcher);
+            selectedImg.setImageResource(R.drawable.icon_img);
         } catch (Exception e) {
             e.printStackTrace();
         }
