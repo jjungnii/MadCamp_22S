@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.LayoutInflater;
 import android.widget.Toast;
 
 
@@ -64,6 +65,7 @@ public class PhoneBookDB extends SQLiteOpenHelper {
         cv.put(COLUMN_PHONE_NUMBER, phone_number);
         cv.put(COLUMN_PHONE_PHOTO, phone_photo);
 
+
         long result = db.insert(TABLE_NAME, null, cv);
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
@@ -72,4 +74,7 @@ public class PhoneBookDB extends SQLiteOpenHelper {
             Toast.makeText(context, "Successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
+
+

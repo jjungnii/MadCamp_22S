@@ -7,6 +7,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.tabbedactivity.ui.main.SectionsPagerAdapter;
@@ -30,5 +31,7 @@ public class MainActivity extends AppCompatActivity {
         tabs.getTabAt(0).setIcon(R.drawable.icon_phonenum);
         tabs.getTabAt(1).setIcon(R.drawable.icon_gallery);
         tabs.getTabAt(2).setIcon(R.drawable.icon_memo);
+
+
     }
 }
