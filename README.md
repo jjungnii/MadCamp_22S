@@ -63,7 +63,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + `FullScreenActivity class`에 대한 새로운 intent를 생성하고 `putExtra()`를 이용하여 선택된 이미지의 id 값을 넘겨줍니다.
   + `setImageResource()`를 이용하여 해당 id 값을 갖는 이미지로 src를 지정함으로써 선택된 이미지를 크게 보여줍니다.
 + Zoom-in
-  + pinch-to-zoom Android library인 Álvaro Blanco Cabrero의 [Zoomy](https://github.com/imablanco/Zoomy)를 활용했습니다. 
+  + pinch-to-zoom Android library인 Álvaro Blanco Cabrero의 [Zoomy](https://github.com/imablanco/Zoomy)를 활용했습니다.     
     __FullScreenActivity.java__
     ```javascript
     Zoomy.Builder builder=new Zoomy.Builder(this)
