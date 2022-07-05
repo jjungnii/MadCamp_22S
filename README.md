@@ -4,16 +4,16 @@
 Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 구성된 안드로이드 어플을 제작했습니다.       
 3개의 탭은 아래와 같은 구성으로 이루어져 있습니다. 
 
-+ Contacts     
-+ Gallery       
-+ Record      
++ Contacts(연락처)     
++ Gallery(갤러리)       
++ Record(일기장)      
 <p align="center">
 <img width="20%" src="https://user-images.githubusercontent.com/81218672/177316059-a10c8b58-b9f0-4de4-9cb6-f28c0a467a46.gif">
 </p>
 
 ## Tab 상세 설명     
 
-### Tab1 - Contacts     
+### Tab1 - Contacts(연락처)     
 첫 번째 탭에서는 연락처를 구현했습니다.  
   
   
@@ -42,7 +42,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + 사진 저장시 크기를 줄이기 위해 `bitmap.compress`를 사용했습니다.
   
   
-### Tab2 - Gallery
+### Tab2 - Gallery(갤러리)
 두 번째 탭에서는 이미지 갤러리를 구현했습니다.      
 
 <p align="center">
@@ -75,7 +75,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
     ```　
 
 
-### Tab3 - Record
+### Tab3 - Record(일기장)
 세 번째 탭에서는 달력에 매일 사진과 글로 기록을 남길 수 있는 공간을 제작했습니다.
 
 <p align="center">
