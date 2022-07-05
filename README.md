@@ -2,7 +2,8 @@
 # Week1 - private     
 
 Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 구성된 안드로이드 어플을 제작했습니다.       
-3개의 탭은 아래와 같은 구성으로 이루어져 있습니다.        
+3개의 탭은 아래와 같은 구성으로 이루어져 있습니다. 
+
 +Contacts     
 +Gallery       
 +Record      
