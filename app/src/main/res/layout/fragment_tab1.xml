@@ -36,6 +36,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:colorAccent="@color/main"
+        android:backgroundTint="@color/main"
         android:src="@drawable/ic_add" />
 
 </FrameLayout>
