@@ -120,7 +120,7 @@
                     android:textStyle="bold"
                     android:visibility="invisible"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="10dp"/>
 
                 <Button
                     android:id="@+id/del_img_Btn"
@@ -149,7 +149,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@id/del_img_Btn"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:visibility="invisible"/>
 
 
@@ -163,7 +163,7 @@
                     android:textStyle="bold"
                     android:visibility="invisible"
                     android:layout_toRightOf="@id/del_img_Btn"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"/>
 
             </RelativeLayout>
