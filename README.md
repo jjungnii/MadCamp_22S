@@ -57,7 +57,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
 #### 구현 방법
 + 갤러리 구성
   + GridView를 이용하여 전반적인 틀을 구성했습니다.
-  + 이미지는 CENTER_CROP
+  + 이미지는 CENTER_CROP되어 나타납니다.
   + Adapter를 이용하여 이미지 파일을 불러왔습니다.     
 + Full Screen
   + `FullScreenActivity class`에 대한 새로운 intent를 생성하고 `putExtra()`를 이용하여 선택된 이미지의 id 값을 넘겨줍니다.
