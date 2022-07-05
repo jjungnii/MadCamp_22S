@@ -12,7 +12,12 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
 ## Tab 상세 설명     
 
 ### Tab1 - Contacts     
-첫 번째 탭에서는 연락처를 구현했습니다.
+첫 번째 탭에서는 연락처를 구현했습니다.  
+  
+  
+<p align="center" style="color:gray">
+<img src = "https://user-images.githubusercontent.com/102964058/177291362-a2d2f0a3-9579-446a-83b6-f11de955528a.jpg" width = "200" height = "400"/>   　　　　 <img src = "https://user-images.githubusercontent.com/102964058/177292373-6bc50f59-719c-4bf2-8874-064f0b2b6f53.jpg" width = "200" height = "400"/>
+</p>
 
 #### 기능 설명
 + Tab 1에서는 현재 저장된 연락처들을 확인 할 수 있습니다.
