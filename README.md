@@ -24,8 +24,8 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + 저장된 연락처가 없을 경우 No Data로 표현됩니다.
   + 연락처에는 인물의 id(번호), 사진, 이름, 전화번호가 저장됩니다.
 
-+ Tab1의 우측 하단 버튼을 이용해서 연락처를 추가하는 Addactivity로 이동합니다.
-  + Addactivity에서는 이름, 전화번호, 사진을 연락처에 추가할 수 잇습니다.
++ Tab1의 우측 하단 버튼을 이용해서 연락처를 추가하는 `Addactivity`로 이동합니다.
+  + `Addactivity`에서는 이름, 전화번호, 사진을 연락처에 추가할 수 잇습니다.
   + 사진은 기본사진, 사진찍기, 갤러리에서 가져오기 중에서 선택할 수 있습니다.
   + 저장 버튼을 누르면 연락처가 추가되고, Tab1에 적용되게 됩니다.
 
@@ -37,7 +37,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
 
 + 연락처 추가
   + 연락처를 저장할 때는 사용자가 선택한 사진과 데이터를 SQLite 데이터베이스에 저장합니다.
-  + 사진 저장시 크기를 줄이기 위해 bitmap.compress를 사용했습니다.
+  + 사진 저장시 크기를 줄이기 위해 `bitmap.compress`를 사용했습니다.
   
   
 ### Tab2 - Gallery
@@ -53,8 +53,8 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + 이미지는 CENTER_CROP
   + Adapter를 이용하여 이미지 파일을 불러왔습니다.     
 + Full Screen
-  + FullScreenActivity class에 대한 새로운 intent를 생성하고 putExtra()를 이용하여 선택된 이미지의 id 값을 넘겨줍니다.
-  + setImageResource()를 이용하여 해당 id 값을 갖는 이미지로 src를 지정함으로써 선택된 이미지를 크게 보여줍니다.
+  + `FullScreenActivity class`에 대한 새로운 intent를 생성하고 `putExtra()`를 이용하여 선택된 이미지의 id 값을 넘겨줍니다.
+  + `setImageResource()`를 이용하여 해당 id 값을 갖는 이미지로 src를 지정함으로써 선택된 이미지를 크게 보여줍니다.
 + Zoom-in
   + pinch-to-zoom Android library인 Álvaro Blanco Cabrero의 [Zoomy](https://github.com/imablanco/Zoomy)를 활용했습니다. 
     __FullScreenActivity.java__
@@ -89,18 +89,18 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
 
 #### 구현 방법
 + 달력 제작
-  + CalendarView를 이용하여 달력을 제작했고, onSelectedDayChange()를 override하여 날짜가 바뀔 때마다 날짜에 맞는 사진과 글을 불러옵니다.
+  + CalendarView를 이용하여 달력을 제작했고, `onSelectedDayChange()`를 override하여 날짜가 바뀔 때마다 날짜에 맞는 사진과 글을 불러옵니다.
 + 데이터(이미지, 텍스트) 저장 및 불러오기
-  + FileInputStream과 FileOutputStream을 이용합니다.
+  + `FileInputStream`과 `FileOutputStream`을 이용합니다.
   + 파일명을 'YYYY-MM-DD.png' 또는 'YYYY-MM-DD.txt'로 설정하여 날짜에 따라 저장되도록 합니다.
   + 이미 사진이 존재하는데 이미지를 수정하는 경우, 새로운 png 파일로 덮어씀으로써 수정이 이루어집니다.
-  + 이미지를 불러올 때에는 Bitmap의 이용을 위해 BufferedInputStream을 추가적으로 사용합니다.
+  + 이미지를 불러올 때에는 Bitmap의 이용을 위해 `BufferedInputStream`을 추가적으로 사용합니다.
 + 이미지 수정
-  + EditImage class의 intent를 생성하고 startActivityForResult()를 사용하여 이미지 수정 화면으로 전환합니다. 
-  + onActivityResult()를 override함으로써 이미지 수정 화면에서 SAVE 버튼을 눌렀을 때 수정된 이미지가 탭3 메인 화면에 바로 반영됩니다.
+  + EditImage class의 intent를 생성하고 `startActivityForResult()`를 사용하여 이미지 수정 화면으로 전환합니다. 
+  + `onActivityResult()`를 override함으로써 이미지 수정 화면에서 SAVE 버튼을 눌렀을 때 수정된 이미지가 탭3 메인 화면에 바로 반영됩니다.
 + 카메라와 갤러리 어플 이용하여 이미지 삽입
-  + 각각에 대해 requestCode를 다르게 선언한 뒤, startActivityForResult()함수를 이용하여 어플을 실행시킵니다.
-  + onActivityResult()를 통해 어플로부터 이미지 데이터를 받아 삽입합니다. 
+  + 각각에 대해 requestCode를 다르게 선언한 뒤, `startActivityForResult()`함수를 이용하여 어플을 실행시킵니다.
+  + `onActivityResult()`를 통해 어플로부터 이미지 데이터를 받아 삽입합니다. 
   + 어플 실행 코드     
     __EditImage.java__
     ```javascript
@@ -147,7 +147,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
     }
     ```
 + 텍스트 관련 화면 조작
-  + 각 object의 기본 visibility값을 INVISIBLE로 설정해둔 뒤, setVisibility()로 값을 바꿉니다. 
+  + 각 object의 기본 visibility값을 INVISIBLE로 설정해둔 뒤, `setVisibility()`로 값을 바꿉니다. 
   + 텍스트를 수정할 때에는 EditText object와 SAVE TEXT 버튼이 보이도록, 텍스트를 저장한 뒤에는 TextView와 EDIT TEXT 버튼이 보이도록 조작합니다. 
 
 
