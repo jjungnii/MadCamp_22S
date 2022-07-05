@@ -221,8 +221,6 @@ public class Tab3 extends Fragment {
             File storage_txt = getActivity().getCacheDir();
             File file_txt = new File(storage_txt, txt_fname);
 
-            Log.i("entered text print", file_txt.exists() + "");
-
             if(!file_txt.exists()) {
                 textView2.setText("");
                 contextEditText.setVisibility(View.VISIBLE);
@@ -240,7 +238,6 @@ public class Tab3 extends Fragment {
                 fis_txt.close();
 
                 str = new String(fileData);
-                Log.i("entered text length", str.length() + "");
 
                 if(str.length() == 0){
                     contextEditText.setVisibility(View.VISIBLE);
@@ -278,7 +275,6 @@ public class Tab3 extends Fragment {
         }
         catch (Exception e)
         {
-            Log.i("entered text print", "에러 발생");
             e.printStackTrace();
         }
 
@@ -330,7 +326,6 @@ public class Tab3 extends Fragment {
         {
             fos_txt = new FileOutputStream(file_txt);
             String content = contextEditText.getText().toString();
-            Log.i("entered text", content);
             fos_txt.write((content).getBytes());
             fos_txt.close();
         }
