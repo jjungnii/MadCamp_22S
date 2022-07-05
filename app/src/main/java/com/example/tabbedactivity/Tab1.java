@@ -1,10 +1,28 @@
 package com.example.tabbedactivity;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.CursorWindow;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +39,12 @@ public class Tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    PhoneBookDB db;
+    ArrayList<PhoneBook> phoneList = new ArrayList<>();
+    RecyclerView recyclerView;
+    PhoneBookAdapter adapter;
+    TextView noDataText;
 
     public Tab1() {
         // Required empty public constructor
@@ -53,10 +77,87 @@ public class Tab1 extends Fragment {
         }
     }
 
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        try{
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100*1024*1024);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
+        View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
+        recyclerView = rootView.findViewById(R.id.recyclerView);
+        adapter = new PhoneBookAdapter(getActivity());
+        recyclerView.setAdapter(adapter);
+        noDataText = rootView.findViewById(R.id.noData_text);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        db = new PhoneBookDB(getActivity());
+
+
+        storeDataInArrays();
+        FloatingActionButton addBtn = rootView.findViewById(R.id.add_btn);
+        addBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity().getApplicationContext(), AddActivity.class);
+                startActivityForResult(intent, 200);
+            }
+        });
+
+
+
+        return rootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+
+
+        adapter = new PhoneBookAdapter(getActivity());
+        recyclerView.setAdapter(adapter);
+
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        db = new PhoneBookDB(getActivity());
+
+
+        storeDataInArrays();
+
+
+    }
+
+    void storeDataInArrays() {
+        Cursor cursor = db.readAllData();
+        if(cursor.getCount()==0){
+            noDataText.setVisibility(noDataText.VISIBLE);
+        }else{
+            noDataText.setVisibility(noDataText.GONE);
+
+            while(cursor.moveToNext()){
+
+                PhoneBook phone = new PhoneBook(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getBlob(3));
+
+                phoneList.add(phone);
+                adapter.addItem(phone);
+
+                adapter.notifyDataSetChanged();
+            }
+        }
+
     }
 }

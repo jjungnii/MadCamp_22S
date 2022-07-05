@@ -8,9 +8,34 @@
     tools:context=".Tab1">
 
     <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerView"/>
+
+
     <TextView
+        android:id="@+id/noData_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hello_blank_tab1" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="230dp"
+        android:fontFamily="@font/maenbal"
+        android:lineSpacingExtra="25dp"
+        android:text="Add Data \nwith + Button"
+        android:textAlignment="center"
+        android:textColor="@color/main"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:colorAccent="@color/main"
+        android:src="@drawable/ic_add" />
 
 </FrameLayout>
