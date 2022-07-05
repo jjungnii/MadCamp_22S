@@ -4,14 +4,16 @@
 Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 구성된 안드로이드 어플을 제작했습니다.       
 3개의 탭은 아래와 같은 구성으로 이루어져 있습니다. 
 
-+ Contacts     
-+ Gallery       
-+ Record      
-
++ Contacts(연락처)     
++ Gallery(갤러리)       
++ Record(일기장)      
+<p align="center">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316059-a10c8b58-b9f0-4de4-9cb6-f28c0a467a46.gif">
+</p>
 
 ## Tab 상세 설명     
 
-### Tab1 - Contacts     
+### Tab1 - Contacts(연락처)     
 첫 번째 탭에서는 연락처를 구현했습니다.  
   
   
@@ -40,8 +42,13 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + 사진 저장시 크기를 줄이기 위해 `bitmap.compress`를 사용했습니다.
   
   
-### Tab2 - Gallery
+### Tab2 - Gallery(갤러리)
 두 번째 탭에서는 이미지 갤러리를 구현했습니다.      
+
+<p align="center">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316362-5a6d9417-ba54-4451-86b7-6f1d70dc6b06.png">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316401-05bf4f74-d9e6-4e23-8c2c-c84c6539a87b.png">
+</p>
 
 #### 기능 설명
 + 이미지를 클릭하면, 클릭한 이미지가 Full Screen으로 볼 수 있습니다.
@@ -68,8 +75,18 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
     ```　
 
 
-### Tab3 - Record
+### Tab3 - Record(일기장)
 세 번째 탭에서는 달력에 매일 사진과 글로 기록을 남길 수 있는 공간을 제작했습니다.
+
+<p align="center">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316746-2be88ada-f375-4b83-ab13-ddb883d54148.png">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316737-9df0d1b3-c24a-4e6c-b799-fbc6404c2853.png">
+</p>
+<p align="center">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316538-9454708f-f93c-427e-9af2-25b9ac3e4424.gif">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316530-83622a3e-d965-44c0-8a12-ace5944c890d.gif">
+<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316556-58a0eef2-f7b0-4c96-812a-200dd219efab.gif">
+</p>
 
 #### 기능 설명
 달력의 날짜를 클릭하면 달력 아래에 해당 일자와 저장된 이미지 및 글을 볼 수 있으며, 수정 및 삭제가 가능합니다.       
