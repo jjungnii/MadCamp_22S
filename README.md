@@ -34,6 +34,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + 연락처를 저장할 때는 사용자가 선택한 사진과 데이터를 SQLite 데이터베이스에 저장합니다.
   + 사진 저장시 크기를 줄이기 위해 bitmap.compress를 사용했습니다.
   
+  
 ### Tab2 - Gallery
 두 번째 탭에서는 이미지 갤러리를 구현했습니다.      
 
@@ -51,23 +52,35 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
   + setImageResource()를 이용하여 해당 id 값을 갖는 이미지로 src를 지정함으로써 선택된 이미지를 크게 보여줍니다.
 + Zoom-in
   + pinch-to-zoom Android library인 Álvaro Blanco Cabrero의 [Zoomy](https://github.com/imablanco/Zoomy)를 활용했습니다. 
-  ```javascript
-  Zoomy.Builder builder=new Zoomy.Builder(this)
-                .target(imageView)
-                .animateZooming(false)
-                .enableImmersiveMode(false);
+    __FullScreenActivity.java__
+    ```javascript
+    Zoomy.Builder builder=new Zoomy.Builder(this)
+                  .target(imageView)
+                  .animateZooming(false)
+                  .enableImmersiveMode(false);
 
-  builder.register();
-  ```　
+    builder.register();
+    ```　
+
 
 ### Tab3 - Record
-세 번째 탭에서는 
-CalendarView를 이용하여 달력을 구현했고, 
+세 번째 탭에서는 달력에 매일 사진과 글로 기록을 남길 수 있는 공간을 제작했습니다.
 
 #### 기능 설명
-+ 
+달력의 날짜를 클릭하면 달력 아래에 해당 일자와 저장된 이미지 및 글을 볼 수 있으며, 수정 및 삭제가 가능합니다.
+ *이미지가 저장되어있지 않을 경우에는 기본 이미지 아이콘이 보입니다. 
++ 이미지
+  + 추가 & 수정
+  + 삭제
++ 텍스트
+  + 텍스트 수정
+  + 텍스트 저장
+
+*어플을 종료하더라도 데이터는 계속
 
 #### 구현 방법
++ 
+
 
 ## Team Member
 Seong-jun Hong <mscj1004@kaist.ac.kr>        
