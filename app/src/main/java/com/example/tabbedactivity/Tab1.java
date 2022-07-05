@@ -2,7 +2,11 @@ package com.example.tabbedactivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorWindow;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
@@ -72,10 +77,20 @@ public class Tab1 extends Fragment {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        try{
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100*1024*1024);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
         View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
         recyclerView = rootView.findViewById(R.id.recyclerView);
         adapter = new PhoneBookAdapter(getActivity());
