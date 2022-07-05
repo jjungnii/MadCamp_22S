@@ -18,6 +18,9 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -102,17 +105,37 @@ public class Tab1 extends Fragment {
         db = new PhoneBookDB(getActivity());
 
 
-
+        storeDataInArrays();
         FloatingActionButton addBtn = rootView.findViewById(R.id.add_btn);
         addBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getActivity().getApplicationContext(), AddActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 200);
             }
         });
-        storeDataInArrays();
+
+
+
         return rootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+
+
+        adapter = new PhoneBookAdapter(getActivity());
+        recyclerView.setAdapter(adapter);
+
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        db = new PhoneBookDB(getActivity());
+
+
+        storeDataInArrays();
+
+
     }
 
     void storeDataInArrays() {
