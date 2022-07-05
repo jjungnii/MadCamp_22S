@@ -10,20 +10,26 @@
         android:id="@+id/new_memory_selected_image"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/icon_img"
         android:layout_marginTop="30dp"/>
 
     <Button
-        android:onClick="openCamera"
-        android:text="Image from Camera"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/maenbal"
+        android:onClick="openCamera"
+        android:text="Image from Camera"
+        android:textStyle="bold"
+        android:textSize="14dp" />
 
 
     <Button
         android:onClick="openGallery"
         android:text="Image from Gallery"
+        android:fontFamily="@font/maenbal"
+        android:textSize="14dp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="10dp" />
@@ -40,17 +46,23 @@
             android:layout_weight="1"
             android:onClick="cancel"
             android:text="Cancel"
+            android:fontFamily="@font/maenbal"
+            android:textSize="14dp"
+            android:textStyle="bold"
             android:layout_height="60dp"
             android:layout_marginRight="2.5dp"/>
 
         <Button
             android:id="@+id/new_memory_save"
             android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="2.5dp"
             android:layout_weight="1"
+            android:fontFamily="@font/maenbal"
             android:onClick="save"
             android:text="Save"
-            android:layout_height="60dp"
-            android:layout_marginLeft="2.5dp" />
+            android:textSize="14dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

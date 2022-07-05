@@ -27,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
+        tabs.getTabAt(0).setIcon(R.drawable.icon_phonenum);
+        tabs.getTabAt(1).setIcon(R.drawable.icon_gallery);
+        tabs.getTabAt(2).setIcon(R.drawable.icon_memo);
     }
 }
