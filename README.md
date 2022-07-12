@@ -83,9 +83,9 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
 <img width="20%" src="https://user-images.githubusercontent.com/81218672/177316737-9df0d1b3-c24a-4e6c-b799-fbc6404c2853.png">
 </p>
 <p align="center">
-<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316538-9454708f-f93c-427e-9af2-25b9ac3e4424.gif">
-<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316530-83622a3e-d965-44c0-8a12-ace5944c890d.gif">
-<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316556-58a0eef2-f7b0-4c96-812a-200dd219efab.gif">
+<img width="50%" src="https://user-images.githubusercontent.com/81218672/177316538-9454708f-f93c-427e-9af2-25b9ac3e4424.gif">
+<img width="50%" src="https://user-images.githubusercontent.com/81218672/177316530-83622a3e-d965-44c0-8a12-ace5944c890d.gif">
+<img width="50%" src="https://user-images.githubusercontent.com/81218672/177316556-58a0eef2-f7b0-4c96-812a-200dd219efab.gif">
 </p>
 
 #### 기능 설명
