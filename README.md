@@ -8,7 +8,7 @@ Android Studio와 Java를 이용하여 스플래시 화면과 3개의 탭으로 
 + Gallery(갤러리)       
 + Record(일기장)      
 <p align="center">
-<img width="20%" src="https://user-images.githubusercontent.com/81218672/177316059-a10c8b58-b9f0-4de4-9cb6-f28c0a467a46.gif">
+<img width="50%" src="https://user-images.githubusercontent.com/81218672/177316059-a10c8b58-b9f0-4de4-9cb6-f28c0a467a46.gif">
 </p>
 
 ## Tab 상세 설명     
